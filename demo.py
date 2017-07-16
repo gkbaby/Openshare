@@ -67,6 +67,17 @@ class Ui_MainWindow(object):
         self.openshead.setText(_translate("MainWindow", "OpenShare", None))
         self.enterloc.setText(_translate("MainWindow", "Enter the location of the folder you want to share:", None))
         self.pushButton.setText(_translate("MainWindow", "Share", None))
+        
+        ### Added a trigger to call a script ###
+        self.pushButton.clicked.connect(self.launch_script)
+
+### script to invoke the http server with the folder name provided ###
+    def launch_script(self):
+        import os
+        data_text = self.locedit.text()
+        cmd = "python thread.py 8888 %s"%data_text
+        os.system(cmd)
+
 
 
 if __name__ == "__main__":
